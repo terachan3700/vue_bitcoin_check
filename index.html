@@ -7,10 +7,28 @@
   <title>Document</title>
 </head>
 <body>
-  <div id="app"></div>
-
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>↲
+  <div id="app">
+    <h2>
+      Bitcoin Price
+    </h2>
+    <section v-if="hasError">
+      Error.
+    </section>
+    <section v-else>
+      <div v-if="loading">
+        Loading...
+      </div>
+      <div v-else>
+        <ul v-cloak>
+          <li v-for="(rate, currency) in bpi">
+            {{ currency }} : {{ rate.rate_float | currencyDecimal}}
+          </li>
+        </ul>
+      </div>
+    </section>
+    </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js"></script>
-  <script src="js/main.js"></script>↲
+  <script src="js/main.js"></script>
 </body>
 </html>
